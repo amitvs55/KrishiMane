@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Ragi/Finger Millet Icon -->
+  <!-- Main stalk -->
+  <rect x="146" y="140" width="8" height="130" rx="3" fill="#5C3317"/>
+  <!-- Ragi has finger-like grain heads spreading outward -->
+  <!-- Center finger -->
+  <path d="M150 130 Q150 60 150 40" stroke="#8B4513" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M150 130 Q150 65 150 45" stroke="#A0522D" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <!-- Left fingers -->
+  <path d="M148 130 Q125 70 110 45" stroke="#8B4513" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M148 130 Q126 72 112 49" stroke="#A0522D" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M146 130 Q105 85 80 65" stroke="#8B4513" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M146 130 Q107 87 84 69" stroke="#A0522D" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  <!-- Right fingers -->
+  <path d="M152 130 Q175 70 190 45" stroke="#8B4513" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M152 130 Q174 72 188 49" stroke="#A0522D" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <path d="M154 130 Q195 85 220 65" stroke="#8B4513" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M154 130 Q193 87 216 69" stroke="#A0522D" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  <!-- Grain dots along fingers -->
+  <circle cx="150" cy="60" r="3" fill="#5C3317" opacity="0.4"/>
+  <circle cx="150" cy="80" r="3" fill="#5C3317" opacity="0.4"/>
+  <circle cx="125" cy="75" r="2.5" fill="#5C3317" opacity="0.4"/>
+  <circle cx="175" cy="75" r="2.5" fill="#5C3317" opacity="0.4"/>
+  <circle cx="100" cy="80" r="2.5" fill="#5C3317" opacity="0.4"/>
+  <circle cx="200" cy="80" r="2.5" fill="#5C3317" opacity="0.4"/>
+  <!-- Leaf -->
+  <path d="M150 180 Q115 168 108 185 Q118 178 150 188Z" fill="#6B8E23" opacity="0.65"/>
+  <path d="M150 200 Q185 188 192 205 Q182 198 150 208Z" fill="#6B8E23" opacity="0.55"/>
+  <!-- Shadow -->
+  <ellipse cx="150" cy="275" rx="38" ry="6" fill="#5C3317" opacity="0.15"/>
+</svg>

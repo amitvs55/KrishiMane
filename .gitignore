@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+backend/.env
+frontend/.env.local
+
+# Database
+*.db
+*.sqlite3
+
+# Build outputs
+frontend/.next/
+frontend/out/
+
+# Docker volumes
+data/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/
+
+# Misc
+*.log
+*.zip
+screenshots/

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Wheat Stalk Icon -->
+  <!-- Main stalk -->
+  <rect x="146" y="140" width="8" height="130" rx="3" fill="#8B7355"/>
+  <!-- Wheat ear - alternating grains left and right -->
+  <!-- Left grains -->
+  <ellipse cx="135" cy="60" rx="12" ry="7" fill="#DAA520" transform="rotate(-25 135 60)"/>
+  <ellipse cx="133" cy="78" rx="12" ry="7" fill="#DAA520" transform="rotate(-25 133 78)"/>
+  <ellipse cx="135" cy="96" rx="12" ry="7" fill="#DAA520" transform="rotate(-25 135 96)"/>
+  <ellipse cx="133" cy="114" rx="12" ry="7" fill="#DAA520" transform="rotate(-25 133 114)"/>
+  <!-- Right grains -->
+  <ellipse cx="165" cy="50" rx="12" ry="7" fill="#DAA520" transform="rotate(25 165 50)"/>
+  <ellipse cx="167" cy="68" rx="12" ry="7" fill="#DAA520" transform="rotate(25 167 68)"/>
+  <ellipse cx="165" cy="86" rx="12" ry="7" fill="#DAA520" transform="rotate(25 165 86)"/>
+  <ellipse cx="167" cy="104" rx="12" ry="7" fill="#DAA520" transform="rotate(25 167 104)"/>
+  <!-- Top grain -->
+  <ellipse cx="150" cy="42" rx="8" ry="14" fill="#DAA520"/>
+  <!-- Highlights on grains -->
+  <ellipse cx="135" cy="58" rx="8" ry="4" fill="#F0C84D" transform="rotate(-25 135 58)" opacity="0.6"/>
+  <ellipse cx="165" cy="48" rx="8" ry="4" fill="#F0C84D" transform="rotate(25 165 48)" opacity="0.6"/>
+  <ellipse cx="150" cy="38" rx="5" ry="9" fill="#F0C84D" opacity="0.5"/>
+  <!-- Awns (whiskers) at top -->
+  <line x1="150" y1="28" x2="145" y2="10" stroke="#8B7355" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="150" y1="28" x2="155" y2="10" stroke="#8B7355" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="150" y1="28" x2="150" y2="8" stroke="#8B7355" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Leaf -->
+  <path d="M150 180 Q115 165 105 185 Q115 180 150 190Z" fill="#8FBC3B" opacity="0.7"/>
+  <path d="M150 200 Q185 185 190 205 Q180 195 150 210Z" fill="#8FBC3B" opacity="0.6"/>
+  <!-- Shadow -->
+  <ellipse cx="150" cy="275" rx="35" ry="6" fill="#8B7355" opacity="0.15"/>
+</svg>

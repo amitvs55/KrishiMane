@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Jowar Cookie Icon -->
+  <!-- Cookie shadow -->
+  <ellipse cx="155" cy="255" rx="75" ry="12" fill="#8B7355" opacity="0.12"/>
+  <!-- Main cookie body -->
+  <circle cx="150" cy="145" r="85" fill="#DEB887"/>
+  <!-- Cookie edge texture -->
+  <circle cx="150" cy="145" r="80" fill="#E5C99A"/>
+  <!-- Inner cookie surface -->
+  <circle cx="150" cy="142" r="74" fill="#EDD4A8"/>
+  <!-- Darker chips/chunks -->
+  <circle cx="120" cy="116" r="8" fill="#B8860B" opacity="0.6"/>
+  <circle cx="174" cy="110" r="7" fill="#B8860B" opacity="0.55"/>
+  <circle cx="146" cy="156" r="9" fill="#B8860B" opacity="0.6"/>
+  <circle cx="184" cy="146" r="6" fill="#B8860B" opacity="0.5"/>
+  <circle cx="114" cy="162" r="7" fill="#B8860B" opacity="0.55"/>
+  <circle cx="164" cy="180" r="8" fill="#B8860B" opacity="0.6"/>
+  <circle cx="132" cy="136" r="5" fill="#B8860B" opacity="0.45"/>
+  <circle cx="176" cy="134" r="6" fill="#B8860B" opacity="0.5"/>
+  <!-- Jowar grain specks -->
+  <circle cx="138" cy="102" r="3" fill="#8B7355" opacity="0.4"/>
+  <circle cx="192" cy="140" r="3" fill="#8B7355" opacity="0.4"/>
+  <circle cx="106" cy="148" r="3" fill="#8B7355" opacity="0.4"/>
+  <circle cx="156" cy="194" r="3" fill="#8B7355" opacity="0.4"/>
+  <circle cx="128" cy="176" r="2.5" fill="#8B7355" opacity="0.35"/>
+  <!-- Surface cracks -->
+  <path d="M122 126 Q136 136 128 156" stroke="#C4A060" stroke-width="1" fill="none" opacity="0.25"/>
+  <path d="M166 118 Q176 132 170 150" stroke="#C4A060" stroke-width="1" fill="none" opacity="0.2"/>
+  <!-- Highlight -->
+  <ellipse cx="132" cy="116" rx="25" ry="15" fill="#F5E0BE" opacity="0.35" transform="rotate(-20 132 116)"/>
+</svg>

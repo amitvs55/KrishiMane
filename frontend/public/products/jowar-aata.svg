@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Jowar/Sorghum Grain Sheaf -->
+  <!-- Main stalk -->
+  <rect x="143" y="120" width="14" height="140" rx="4" fill="#8B6914"/>
+  <!-- Left stalk -->
+  <rect x="115" y="130" width="10" height="120" rx="3" fill="#8B6914" transform="rotate(-12 120 190)"/>
+  <!-- Right stalk -->
+  <rect x="175" y="130" width="10" height="120" rx="3" fill="#8B6914" transform="rotate(12 180 190)"/>
+  <!-- Tie/band -->
+  <ellipse cx="150" cy="210" rx="30" ry="8" fill="#6B4F1A"/>
+  <!-- Center grain head -->
+  <ellipse cx="150" cy="85" rx="18" ry="35" fill="#D4A017"/>
+  <ellipse cx="150" cy="80" rx="14" ry="28" fill="#E8B830"/>
+  <!-- Grain texture dots on center -->
+  <circle cx="145" cy="70" r="3" fill="#8B6914" opacity="0.4"/>
+  <circle cx="155" cy="75" r="3" fill="#8B6914" opacity="0.4"/>
+  <circle cx="150" cy="85" r="3" fill="#8B6914" opacity="0.4"/>
+  <circle cx="146" cy="95" r="2.5" fill="#8B6914" opacity="0.4"/>
+  <circle cx="154" cy="65" r="2.5" fill="#8B6914" opacity="0.4"/>
+  <!-- Left grain head -->
+  <ellipse cx="108" cy="100" rx="14" ry="28" fill="#D4A017" transform="rotate(-15 108 100)"/>
+  <ellipse cx="108" cy="97" rx="11" ry="22" fill="#E8B830" transform="rotate(-15 108 97)"/>
+  <circle cx="105" cy="88" r="2.5" fill="#8B6914" opacity="0.4"/>
+  <circle cx="110" cy="98" r="2.5" fill="#8B6914" opacity="0.4"/>
+  <circle cx="107" cy="108" r="2" fill="#8B6914" opacity="0.4"/>
+  <!-- Right grain head -->
+  <ellipse cx="192" cy="100" rx="14" ry="28" fill="#D4A017" transform="rotate(15 192 100)"/>
+  <ellipse cx="192" cy="97" rx="11" ry="22" fill="#E8B830" transform="rotate(15 192 97)"/>
+  <circle cx="195" cy="88" r="2.5" fill="#8B6914" opacity="0.4"/>
+  <circle cx="190" cy="98" r="2.5" fill="#8B6914" opacity="0.4"/>
+  <circle cx="193" cy="108" r="2" fill="#8B6914" opacity="0.4"/>
+  <!-- Small leaves on stalks -->
+  <path d="M143 170 Q120 160 115 175" stroke="#6B8E23" stroke-width="2" fill="#8FBC3B" opacity="0.7"/>
+  <path d="M157 180 Q180 170 185 185" stroke="#6B8E23" stroke-width="2" fill="#8FBC3B" opacity="0.7"/>
+  <!-- Shadow under sheaf -->
+  <ellipse cx="150" cy="268" rx="45" ry="8" fill="#8B6914" opacity="0.15"/>
+</svg>

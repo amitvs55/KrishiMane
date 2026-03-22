@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Chickpea/Chana Icon -->
+  <!-- Large chickpea shape (center) -->
+  <circle cx="150" cy="130" r="55" fill="#D2B48C"/>
+  <circle cx="150" cy="126" r="50" fill="#DEC29B"/>
+  <!-- Chickpea cleft/groove -->
+  <path d="M150 76 Q148 110 150 180" stroke="#8B7355" stroke-width="2" fill="none" opacity="0.5"/>
+  <!-- Surface texture - subtle bumps -->
+  <circle cx="130" cy="115" r="15" fill="#E8D5B0" opacity="0.5"/>
+  <circle cx="165" cy="110" r="12" fill="#E8D5B0" opacity="0.4"/>
+  <circle cx="145" cy="140" r="10" fill="#C4A57B" opacity="0.3"/>
+  <!-- Small beak/point at top -->
+  <circle cx="150" cy="78" r="4" fill="#C4A57B"/>
+  <!-- Smaller chickpeas around -->
+  <circle cx="80" cy="190" r="25" fill="#D2B48C"/>
+  <circle cx="80" cy="188" r="22" fill="#DEC29B"/>
+  <path d="M80 166 Q79 180 80 210" stroke="#8B7355" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <circle cx="220" cy="190" r="25" fill="#D2B48C"/>
+  <circle cx="220" cy="188" r="22" fill="#DEC29B"/>
+  <path d="M220 166 Q219 180 220 210" stroke="#8B7355" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <circle cx="130" cy="220" r="20" fill="#D2B48C"/>
+  <circle cx="130" cy="218" r="17" fill="#DEC29B"/>
+  <circle cx="175" cy="225" r="18" fill="#D2B48C"/>
+  <circle cx="175" cy="223" r="15" fill="#DEC29B"/>
+  <!-- Shadow -->
+  <ellipse cx="150" cy="270" rx="55" ry="8" fill="#8B7355" opacity="0.12"/>
+</svg>

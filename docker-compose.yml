@@ -1,0 +1,65 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: krishimane-db
+    environment:
+      POSTGRES_USER: krishimane
+      POSTGRES_PASSWORD: krishimane123
+      POSTGRES_DB: krishimane
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U krishimane"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: krishimane-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - JWT_SECRET=${JWT_SECRET:-krishimane-jwt-secret-change-in-production-2024}
+      - DATABASE_URL=postgresql://krishimane:krishimane123@postgres:5432/krishimane
+      - RAZORPAY_KEY_ID=${RAZORPAY_KEY_ID:-rzp_test_REPLACE_ME}
+      - RAZORPAY_KEY_SECRET=${RAZORPAY_KEY_SECRET:-REPLACE_ME_SECRET}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: krishimane-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_RAZORPAY_KEY_ID=${RAZORPAY_KEY_ID:-rzp_test_REPLACE_ME}
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+
+networks:
+  default:
+    name: krishimane-network

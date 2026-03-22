@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Bajra/Pearl Millet Grain Sheaf -->
+  <!-- Main stalk -->
+  <rect x="143" y="120" width="14" height="140" rx="4" fill="#6B4F1A"/>
+  <!-- Left stalk -->
+  <rect x="115" y="130" width="10" height="120" rx="3" fill="#6B4F1A" transform="rotate(-12 120 190)"/>
+  <!-- Right stalk -->
+  <rect x="175" y="130" width="10" height="120" rx="3" fill="#6B4F1A" transform="rotate(12 180 190)"/>
+  <!-- Tie/band -->
+  <ellipse cx="150" cy="210" rx="30" ry="8" fill="#4A3610"/>
+  <!-- Center grain head - bajra has a cylindrical spike -->
+  <rect x="135" y="50" width="30" height="70" rx="15" fill="#B8860B"/>
+  <rect x="139" y="55" width="22" height="60" rx="11" fill="#CCA030"/>
+  <!-- Grain texture -->
+  <circle cx="147" cy="65" r="3" fill="#6B4F1A" opacity="0.35"/>
+  <circle cx="155" cy="72" r="3" fill="#6B4F1A" opacity="0.35"/>
+  <circle cx="148" cy="82" r="3" fill="#6B4F1A" opacity="0.35"/>
+  <circle cx="154" cy="92" r="2.5" fill="#6B4F1A" opacity="0.35"/>
+  <circle cx="149" cy="100" r="2.5" fill="#6B4F1A" opacity="0.35"/>
+  <!-- Left grain head -->
+  <rect x="93" y="68" width="24" height="55" rx="12" fill="#B8860B" transform="rotate(-15 105 95)"/>
+  <rect x="97" y="73" width="16" height="45" rx="8" fill="#CCA030" transform="rotate(-15 105 95)"/>
+  <circle cx="102" cy="85" r="2.5" fill="#6B4F1A" opacity="0.35"/>
+  <circle cx="107" cy="95" r="2.5" fill="#6B4F1A" opacity="0.35"/>
+  <!-- Right grain head -->
+  <rect x="183" y="68" width="24" height="55" rx="12" fill="#B8860B" transform="rotate(15 195 95)"/>
+  <rect x="187" y="73" width="16" height="45" rx="8" fill="#CCA030" transform="rotate(15 195 95)"/>
+  <circle cx="198" cy="85" r="2.5" fill="#6B4F1A" opacity="0.35"/>
+  <circle cx="193" cy="95" r="2.5" fill="#6B4F1A" opacity="0.35"/>
+  <!-- Small leaves -->
+  <path d="M143 170 Q120 160 115 175" stroke="#6B8E23" stroke-width="2" fill="#8FBC3B" opacity="0.7"/>
+  <path d="M157 180 Q180 170 185 185" stroke="#6B8E23" stroke-width="2" fill="#8FBC3B" opacity="0.7"/>
+  <!-- Shadow -->
+  <ellipse cx="150" cy="268" rx="45" ry="8" fill="#6B4F1A" opacity="0.15"/>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Bajra Cookie Icon -->
+  <!-- Cookie shadow -->
+  <ellipse cx="155" cy="255" rx="75" ry="12" fill="#6B4F1A" opacity="0.12"/>
+  <!-- Main cookie body -->
+  <circle cx="150" cy="145" r="85" fill="#CD853F"/>
+  <!-- Cookie edge texture -->
+  <circle cx="150" cy="145" r="80" fill="#D4965A"/>
+  <!-- Inner cookie surface -->
+  <circle cx="150" cy="142" r="74" fill="#DCA06A"/>
+  <!-- Dark chips/chunks -->
+  <circle cx="122" cy="118" r="8" fill="#8B6914" opacity="0.65"/>
+  <circle cx="172" cy="112" r="7" fill="#8B6914" opacity="0.6"/>
+  <circle cx="148" cy="158" r="9" fill="#8B6914" opacity="0.65"/>
+  <circle cx="182" cy="148" r="6" fill="#8B6914" opacity="0.55"/>
+  <circle cx="112" cy="160" r="7" fill="#8B6914" opacity="0.6"/>
+  <circle cx="162" cy="178" r="8" fill="#8B6914" opacity="0.65"/>
+  <circle cx="135" cy="138" r="5" fill="#8B6914" opacity="0.5"/>
+  <circle cx="178" cy="132" r="6" fill="#8B6914" opacity="0.5"/>
+  <!-- Bajra grain specks -->
+  <circle cx="140" cy="105" r="3" fill="#6B4F1A" opacity="0.45"/>
+  <circle cx="188" cy="138" r="3" fill="#6B4F1A" opacity="0.45"/>
+  <circle cx="108" cy="142" r="3" fill="#6B4F1A" opacity="0.45"/>
+  <circle cx="158" cy="192" r="3" fill="#6B4F1A" opacity="0.45"/>
+  <circle cx="130" cy="178" r="2.5" fill="#6B4F1A" opacity="0.4"/>
+  <!-- Surface cracks -->
+  <path d="M125 128 Q138 138 130 158" stroke="#A07530" stroke-width="1" fill="none" opacity="0.25"/>
+  <path d="M168 122 Q178 135 172 152" stroke="#A07530" stroke-width="1" fill="none" opacity="0.2"/>
+  <!-- Highlight -->
+  <ellipse cx="135" cy="118" rx="25" ry="15" fill="#E8C088" opacity="0.3" transform="rotate(-20 135 118)"/>
+</svg>

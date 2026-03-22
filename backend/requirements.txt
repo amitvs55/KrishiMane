@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+langgraph>=0.2.0
+langchain-google-genai
+langchain-core
+python-dotenv
+sse-starlette
+python-jose[cryptography]
+passlib
+bcrypt==3.2.2
+sqlalchemy>=2.0.0
+psycopg2-binary
+razorpay

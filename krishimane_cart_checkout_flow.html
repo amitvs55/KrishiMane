@@ -1,0 +1,513 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#1B4332;--g2:#2D6A4F;--g3:#52936E;--go:#B7791F;--go2:#D4A853;
+  --cr:#FBF7F0;--bdr:#E0D8C8;--wh:#FFFFFF;
+  --tx:var(--color-text-primary);--mt:var(--color-text-secondary);
+}
+#km{font-family:var(--font-sans);min-height:680px;background:var(--cr)}
+.nav{background:var(--g);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.nav-logo{color:#fff;font-size:22px;font-weight:500;letter-spacing:.5px;font-family:var(--font-serif)}
+.nav-logo span{color:var(--go2);font-size:13px;display:block;font-weight:400;letter-spacing:1px;font-family:var(--font-sans)}
+.cart-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:14px;font-weight:500;display:flex;align-items:center;gap:8px;transition:background .2s}
+.cart-btn:hover{background:rgba(255,255,255,.2)}
+.cart-badge{background:var(--go);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500}
+.screen{display:none;animation:fadeUp .25s ease}
+.screen.on{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.step-bar{background:#fff;border-bottom:1px solid var(--bdr);padding:16px 24px;display:flex;gap:8px;align-items:center}
+.step{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mt)}
+.step.done .snum{background:var(--g2);color:#fff}
+.step.done .slbl{color:var(--g2)}
+.step.active .snum{background:var(--g);color:#fff}
+.step.active .slbl{color:var(--g);font-weight:500}
+.snum{width:24px;height:24px;border-radius:50%;background:var(--bdr);color:var(--mt);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.sdiv{width:32px;height:1px;background:var(--bdr);flex-shrink:0}
+.sdiv.done{background:var(--g2)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;padding:28px 24px}
+.sec-hd{padding:28px 24px 0;text-align:center}
+.sec-hd h2{font-family:var(--font-serif);font-size:26px;font-weight:400;color:var(--g);margin-bottom:6px}
+.sec-hd p{font-size:14px;color:var(--mt)}
+.pcard{background:#fff;border:1px solid var(--bdr);border-radius:16px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.pcard:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.pimg{height:160px;display:flex;align-items:center;justify-content:center;position:relative}
+.pimg-emoji{font-size:64px;line-height:1}
+.pbadge{position:absolute;top:12px;right:12px;background:var(--g);color:#fff;font-size:11px;padding:4px 10px;border-radius:12px;font-weight:500}
+.pbody{padding:16px}
+.pname{font-size:16px;font-weight:500;color:var(--g);margin-bottom:4px}
+.ptagline{font-size:12px;color:var(--mt);margin-bottom:14px;line-height:1.5}
+.var-row{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.vbtn{border:1px solid var(--bdr);background:#fff;padding:5px 10px;border-radius:8px;font-size:12px;cursor:pointer;color:var(--tx);transition:all .15s}
+.vbtn.sel{border-color:var(--g);background:var(--g);color:#fff}
+.vbtn:hover:not(.sel){border-color:var(--g3);color:var(--g)}
+.pfoot{display:flex;align-items:center;justify-content:space-between}
+.pprice{font-size:20px;font-weight:500;color:var(--go)}
+.pprice-sub{font-size:12px;color:var(--mt)}
+.add-btn{background:var(--g);color:#fff;border:none;padding:9px 18px;border-radius:10px;font-size:14px;cursor:pointer;font-weight:500;transition:background .2s}
+.add-btn:hover{background:var(--g2)}
+.add-btn.added{background:var(--go)}
+.stock-low{font-size:11px;color:#C62828;margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.cart-page{max-width:900px;margin:0 auto;padding:24px}
+.back-link{color:var(--g);font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;font-weight:500}
+.back-link:hover{color:var(--go)}
+.cart-layout{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
+@media(max-width:700px){.cart-layout{grid-template-columns:1fr}}
+.cart-items{background:#fff;border:1px solid var(--bdr);border-radius:16px;overflow:hidden}
+.cart-hd{padding:16px 20px;border-bottom:1px solid var(--bdr);font-size:15px;font-weight:500;color:var(--g)}
+.citem{padding:16px 20px;border-bottom:1px solid var(--bdr);display:flex;gap:16px;align-items:center}
+.citem:last-child{border-bottom:none}
+.citem-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.citem-info{flex:1}
+.citem-name{font-size:14px;font-weight:500;color:var(--g);margin-bottom:2px}
+.citem-var{font-size:12px;color:var(--mt)}
+.citem-price{font-size:14px;font-weight:500;color:var(--go);margin-top:6px}
+.qty-ctrl{display:flex;align-items:center;gap:10px}
+.qbtn{width:28px;height:28px;border:1px solid var(--bdr);border-radius:8px;background:#fff;cursor:pointer;font-size:16px;font-weight:500;color:var(--g);display:flex;align-items:center;justify-content:center;transition:all .15s}
+.qbtn:hover{border-color:var(--g);background:var(--g);color:#fff}
+.qnum{font-size:15px;font-weight:500;min-width:20px;text-align:center;color:var(--tx)}
+.rm-btn{color:#C62828;cursor:pointer;font-size:12px;background:none;border:none;margin-left:auto;opacity:.7}
+.rm-btn:hover{opacity:1}
+.empty-cart{padding:48px 24px;text-align:center;color:var(--mt)}
+.empty-cart-icon{font-size:48px;margin-bottom:12px;opacity:.4}
+.summary-box{background:#fff;border:1px solid var(--bdr);border-radius:16px;overflow:hidden;position:sticky;top:80px}
+.sum-hd{padding:16px 20px;border-bottom:1px solid var(--bdr);font-size:15px;font-weight:500;color:var(--g)}
+.sum-body{padding:16px 20px}
+.sum-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:14px}
+.sum-row .lbl{color:var(--mt)}
+.sum-row .val{color:var(--tx);font-weight:500}
+.sum-divider{border:none;border-top:1px solid var(--bdr);margin:14px 0}
+.sum-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.sum-total .lbl{font-size:15px;font-weight:500;color:var(--g)}
+.sum-total .val{font-size:20px;font-weight:500;color:var(--go)}
+.free-ship{background:#F0FDF4;color:#15803D;font-size:12px;padding:8px 12px;border-radius:8px;margin-bottom:16px;text-align:center;border:1px solid #BBF7D0}
+.cta-btn{width:100%;padding:13px;background:var(--g);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:500;cursor:pointer;transition:background .2s}
+.cta-btn:hover{background:var(--g2)}
+.cta-btn:disabled{background:var(--bdr);color:var(--mt);cursor:not-allowed}
+.cta-btn.gold{background:var(--go)}
+.cta-btn.gold:hover{background:var(--go2)}
+.co-wrap{max-width:800px;margin:0 auto;padding:24px}
+.co-card{background:#fff;border:1px solid var(--bdr);border-radius:16px;overflow:hidden;margin-bottom:20px}
+.co-card-hd{padding:16px 20px;border-bottom:1px solid var(--bdr);font-size:15px;font-weight:500;color:var(--g)}
+.co-card-body{padding:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-full{grid-column:1/-1}
+.fgrp{display:flex;flex-direction:column;gap:6px}
+.fgrp label{font-size:13px;color:var(--mt);font-weight:500}
+.fgrp input, .fgrp select{padding:10px 14px;border:1px solid var(--bdr);border-radius:10px;font-size:14px;background:#fff;color:var(--tx);width:100%;outline:none;transition:border-color .15s}
+.fgrp input:focus, .fgrp select:focus{border-color:var(--g)}
+.fgrp input::placeholder{color:var(--mt);opacity:.6}
+.hint{font-size:11px;color:var(--mt);margin-top:2px}
+.review-items{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
+.ri{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding:10px 0;border-bottom:1px solid var(--bdr)}
+.ri:last-child{border-bottom:none}
+.ri-name{color:var(--tx);font-weight:500}
+.ri-meta{font-size:12px;color:var(--mt)}
+.ri-price{color:var(--go);font-weight:500}
+.pay-opts{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.pay-opt{border:2px solid var(--bdr);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:14px}
+.pay-opt.sel{border-color:var(--g);background:#F0F9F4}
+.pay-opt-icon{width:40px;height:40px;border-radius:10px;background:var(--cr);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.pay-opt-name{font-size:14px;font-weight:500;color:var(--g)}
+.pay-opt-desc{font-size:12px;color:var(--mt)}
+.pay-check{width:18px;height:18px;border-radius:50%;border:2px solid var(--bdr);margin-left:auto;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.pay-opt.sel .pay-check{border-color:var(--g);background:var(--g)}
+.pay-check-dot{width:8px;height:8px;border-radius:50%;background:#fff}
+.confirm-wrap{max-width:540px;margin:0 auto;padding:48px 24px;text-align:center}
+.confirm-icon{width:80px;height:80px;background:#F0FDF4;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;margin:0 auto 20px;border:3px solid #BBF7D0}
+.confirm-wrap h2{font-family:var(--font-serif);font-size:28px;font-weight:400;color:var(--g);margin-bottom:8px}
+.confirm-wrap p{font-size:14px;color:var(--mt);margin-bottom:24px}
+.order-id{background:#fff;border:1px solid var(--bdr);border-radius:12px;padding:16px 24px;display:inline-flex;flex-direction:column;gap:4px;margin-bottom:24px}
+.order-id .lbl{font-size:12px;color:var(--mt);font-weight:500;letter-spacing:.5px}
+.order-id .val{font-size:20px;font-weight:500;color:var(--g);font-family:var(--font-mono)}
+.confirm-items{background:#fff;border:1px solid var(--bdr);border-radius:12px;margin-bottom:20px;overflow:hidden;text-align:left}
+.ci-row{padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-size:14px;border-bottom:1px solid var(--bdr)}
+.ci-row:last-child{border-bottom:none}
+.deliv-badge{background:var(--cr);border:1px solid var(--bdr);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--mt);margin-bottom:24px;text-align:left}
+.deliv-badge strong{color:var(--g)}
+.toast{position:absolute;top:70px;right:20px;background:var(--g);color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:500;z-index:100;animation:fadeUp .2s ease;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+</style>
+
+<div id="km">
+<nav class="nav">
+  <div class="nav-logo">KrishiMane<span>PURE COLD-PRESSED OILS</span></div>
+  <button class="cart-btn" onclick="APP.goCart()">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Cart <div class="cart-badge" id="cbadge">0</div>
+  </button>
+</nav>
+
+<div id="s-products" class="screen on">
+  <div class="sec-hd">
+    <h2>Artisanal Cold-Pressed Oils</h2>
+    <p>No additives, no chemicals — just nature, as it was meant to be.</p>
+  </div>
+  <div class="products-grid" id="pgrid"></div>
+</div>
+
+<div id="s-cart" class="screen">
+  <div class="cart-page">
+    <div class="back-link" onclick="APP.show('products')">&#8592; Continue Shopping</div>
+    <div class="cart-layout">
+      <div>
+        <div class="cart-items" id="cart-items-el"></div>
+      </div>
+      <div>
+        <div class="summary-box" id="sum-box"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="s-checkout" class="screen">
+  <div class="step-bar" id="step-bar"></div>
+  <div class="co-wrap" id="co-content"></div>
+</div>
+
+<div id="s-confirm" class="screen">
+  <div class="confirm-wrap" id="confirm-content"></div>
+</div>
+</div>
+
+<script>
+const PRODS = [
+  {id:'saf',emoji:'🌼',name:'Safflower Oil',badge:'Heart Healthy',bg:'#FFFBEB',
+   desc:'Rich in linoleic acid. Ideal for high-heat cooking & skincare.',
+   vars:[{id:'saf-500',l:'500 ml',p:259,w:600,s:120},{id:'saf-1l',l:'1 L',p:499,w:1150,s:85},{id:'saf-5l',l:'5 L',p:2399,w:5400,s:20}]},
+  {id:'sun',emoji:'🌻',name:'Sunflower Oil',badge:'Vitamin E Rich',bg:'#FFF9E6',
+   desc:'Highest Vitamin E in our range. Perfect for everyday frying and baking.',
+   vars:[{id:'sun-500',l:'500 ml',p:219,w:600,s:200},{id:'sun-1l',l:'1 L',p:399,w:1150,s:150},{id:'sun-5l',l:'5 L',p:1899,w:5400,s:40}]},
+  {id:'gnd',emoji:'🥜',name:'Groundnut Oil',badge:'Traditional',bg:'#FEF3E2',
+   desc:'Wood-pressed. Rich, natural peanut aroma that elevates every dish.',
+   vars:[{id:'gnd-500',l:'500 ml',p:239,w:600,s:90},{id:'gnd-1l',l:'1 L',p:419,w:1150,s:75},{id:'gnd-5l',l:'5 L',p:1999,w:5400,s:8}]},
+  {id:'coc',emoji:'🥥',name:'Coconut Oil',badge:'Multi-Use',bg:'#F0FEF7',
+   desc:'Virgin, cold-pressed. MCTs + lauric acid for cooking, hair & skin.',
+   vars:[{id:'coc-500',l:'500 ml',p:279,w:600,s:60},{id:'coc-1l',l:'1 L',p:499,w:1150,s:45},{id:'coc-5l',l:'5 L',p:2299,w:5400,s:5}]},
+];
+
+const ZONES={KA:'local',MH:'a',GJ:'a',TN:'a',AP:'a',TG:'a',KL:'a',DL:'b',UP:'b',RJ:'b',HR:'b',PB:'b',MP:'b'};
+const SHIP={local:[0,50,120],a:[60,90,180],b:[80,130,240],c:[100,160,300]};
+
+const APP = {
+  cart:[],selVar:{saf:0,sun:0,gnd:0,coc:0},
+  step:1,addr:{name:'',phone:'',pin:'',city:'',state:'',line1:'',line2:''},
+  pay:'razorpay',orderId:'',toast:null,
+
+  show(sc){
+    document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+    document.getElementById('s-'+sc).classList.add('on');
+    if(sc==='products') this.renderProducts();
+    if(sc==='cart'){this.renderCart();}
+    if(sc==='checkout'){this.renderCheckout();}
+    if(sc==='confirm'){this.renderConfirm();}
+    this.updateBadge();
+  },
+
+  goCart(){
+    if(this.cart.length===0){this.showToast('Your cart is empty — add some oils first!');return;}
+    this.show('cart');
+  },
+
+  updateBadge(){
+    const n=this.cart.reduce((a,i)=>a+i.qty,0);
+    document.getElementById('cbadge').textContent=n;
+  },
+
+  showToast(msg){
+    clearTimeout(this._t);
+    let el=document.getElementById('km-toast');
+    if(!el){el=document.createElement('div');el.id='km-toast';el.className='toast';document.getElementById('km').style.position='relative';document.getElementById('km').appendChild(el);}
+    el.textContent=msg;el.style.display='block';
+    this._t=setTimeout(()=>{el.style.display='none';},2200);
+  },
+
+  addToCart(pid){
+    const prod=PRODS.find(p=>p.id===pid);
+    const vi=this.selVar[pid];
+    const vr=prod.vars[vi];
+    const existing=this.cart.find(i=>i.varId===vr.id);
+    if(existing){
+      if(existing.qty>=vr.s){this.showToast('Max stock reached for this item.');return;}
+      existing.qty++;
+    } else {
+      this.cart.push({varId:vr.id,pid,name:prod.name,emoji:prod.emoji,bg:prod.bg,label:vr.l,price:vr.p,weight:vr.w,stock:vr.s,qty:1});
+    }
+    this.showToast('Added to cart — '+prod.emoji+' '+prod.name+' '+vr.l);
+    this.updateBadge();
+    this.renderProducts();
+  },
+
+  setVar(pid,idx){this.selVar[pid]=idx;this.renderProducts();},
+
+  updateQty(varId,delta){
+    const item=this.cart.find(i=>i.varId===varId);
+    if(!item) return;
+    item.qty+=delta;
+    if(item.qty<=0) this.cart=this.cart.filter(i=>i.varId!==varId);
+    if(item.qty>item.stock) item.qty=item.stock;
+    this.renderCart();this.updateBadge();
+  },
+
+  removeItem(varId){this.cart=this.cart.filter(i=>i.varId!==varId);this.renderCart();this.updateBadge();},
+
+  totals(state){
+    const sub=this.cart.reduce((a,i)=>a+i.price*i.qty,0);
+    const wkg=this.cart.reduce((a,i)=>a+(i.weight*i.qty)/1000,0);
+    const zone=state?ZONES[state]||'c':'c';
+    const free=sub>=999;
+    let ship=0;
+    if(!free){const br=wkg<=1?0:wkg<=3?1:2;ship=SHIP[zone][br];}
+    const gst=Math.round((sub+ship)*0.05);
+    return{sub,ship,gst,total:sub+ship+gst,free};
+  },
+
+  renderProducts(){
+    const el=document.getElementById('pgrid');
+    if(!el)return;
+    el.innerHTML=PRODS.map(p=>{
+      const vi=this.selVar[p.id];
+      const vr=p.vars[vi];
+      const inCart=this.cart.find(i=>i.varId===vr.id);
+      const lowStock=vr.s<10;
+      return`<div class="pcard">
+        <div class="pimg" style="background:${p.bg}">
+          <div class="pimg-emoji">${p.emoji}</div>
+          <div class="pbadge">${p.badge}</div>
+        </div>
+        <div class="pbody">
+          <div class="pname">${p.name}</div>
+          <div class="ptagline">${p.desc}</div>
+          <div class="var-row">
+            ${p.vars.map((v,i)=>`<button class="vbtn${i===vi?' sel':''}" onclick="APP.setVar('${p.id}',${i})">${v.l}</button>`).join('')}
+          </div>
+          ${lowStock?`<div class="stock-low"><svg width="12" height="12" fill="#C62828" viewBox="0 0 16 16"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 4v4"/><circle cx="8" cy="12" r="1"/></svg>Only ${vr.s} left</div>`:''}
+          <div class="pfoot">
+            <div><div class="pprice">&#8377;${vr.p.toLocaleString('en-IN')}</div><div class="pprice-sub">incl. GST</div></div>
+            <button class="add-btn${inCart?' added':''}" onclick="APP.addToCart('${p.id}')">${inCart?'Added \u2713':'Add to Cart'}</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  },
+
+  renderCart(){
+    const items=document.getElementById('cart-items-el');
+    const sum=document.getElementById('sum-box');
+    if(!items||!sum)return;
+    if(this.cart.length===0){
+      items.innerHTML=`<div class="cart-hd">Your Cart</div><div class="empty-cart"><div class="empty-cart-icon">&#128722;</div><p>No items in your cart yet.</p></div>`;
+      sum.innerHTML='';return;
+    }
+    items.innerHTML=`<div class="cart-hd">Your Cart (${this.cart.reduce((a,i)=>a+i.qty,0)} items)</div>`+
+      this.cart.map(i=>`<div class="citem">
+        <div class="citem-icon" style="background:${i.bg}">${i.emoji}</div>
+        <div class="citem-info">
+          <div class="citem-name">${i.name}</div>
+          <div class="citem-var">${i.label}</div>
+          <div class="citem-price">&#8377;${(i.price*i.qty).toLocaleString('en-IN')}</div>
+        </div>
+        <div class="qty-ctrl">
+          <button class="qbtn" onclick="APP.updateQty('${i.varId}',-1)">&#8722;</button>
+          <div class="qnum">${i.qty}</div>
+          <button class="qbtn" onclick="APP.updateQty('${i.varId}',1)">+</button>
+        </div>
+        <button class="rm-btn" onclick="APP.removeItem('${i.varId}')">&#10005; Remove</button>
+      </div>`).join('');
+    const t=this.totals('');
+    sum.innerHTML=`<div class="sum-hd">Order Summary</div><div class="sum-body">
+      <div class="sum-row"><span class="lbl">Subtotal</span><span class="val">&#8377;${t.sub.toLocaleString('en-IN')}</span></div>
+      <div class="sum-row"><span class="lbl">Shipping</span><span class="val" style="color:var(--g3);font-size:12px">Calculated at checkout</span></div>
+      <div class="sum-row"><span class="lbl">GST (5%)</span><span class="val">Est. &#8377;${t.gst.toLocaleString('en-IN')}</span></div>
+      <hr class="sum-divider"/>
+      ${t.sub>=999?'<div class="free-ship">&#127873; Free shipping on this order!</div>':'<div style="font-size:12px;color:var(--mt);margin-bottom:14px;text-align:center">Add &#8377;'+(999-t.sub)+' more for free shipping</div>'}
+      <div class="sum-total"><span class="lbl">Est. Total</span><span class="val">&#8377;~${t.sub.toLocaleString('en-IN')}</span></div>
+      <button class="cta-btn" onclick="APP.step=1;APP.show('checkout')">Proceed to Checkout &#8594;</button>
+      <div style="text-align:center;margin-top:10px;font-size:12px;color:var(--mt)">&#128274; Secure checkout &bull; 100% safe</div>
+    </div>`;
+  },
+
+  renderCheckout(){
+    const stepBar=document.getElementById('step-bar');
+    const content=document.getElementById('co-content');
+    if(!stepBar||!content)return;
+    const steps=['Delivery','Review','Payment'];
+    stepBar.innerHTML=steps.map((s,i)=>{
+      const n=i+1;
+      const cls=n<this.step?'done':n===this.step?'active':'';
+      return`${i>0?`<div class="sdiv${n<=this.step?' done':''}"></div>`:''}
+      <div class="step ${cls}"><div class="snum">${n<this.step?'&#10003;':n}</div><div class="slbl">${s}</div></div>`;
+    }).join('');
+    if(this.step===1) content.innerHTML=this.stepAddress();
+    if(this.step===2) content.innerHTML=this.stepReview();
+    if(this.step===3) content.innerHTML=this.stepPayment();
+    this.bindCheckout();
+  },
+
+  stepAddress(){
+    const a=this.addr;
+    return`<div class="back-link" onclick="APP.show('cart')">&#8592; Back to Cart</div>
+    <div class="co-card">
+      <div class="co-card-hd">&#128205; Delivery Address</div>
+      <div class="co-card-body">
+        <div class="form-grid">
+          <div class="fgrp"><label>Full Name</label><input id="f-name" value="${a.name}" placeholder="e.g. Priya Sharma"/></div>
+          <div class="fgrp"><label>Mobile Number</label><input id="f-phone" value="${a.phone}" placeholder="+91 98765 43210"/></div>
+          <div class="fgrp"><label>Pincode</label><input id="f-pin" value="${a.pin}" placeholder="560001" maxlength="6"/><div class="hint" id="pin-hint">${a.city?a.city+', '+a.state:''}</div></div>
+          <div class="fgrp"><label>City</label><input id="f-city" value="${a.city}" placeholder="Bengaluru" readonly/></div>
+          <div class="fgrp form-full"><label>State</label>
+            <select id="f-state">
+              ${['','KA','MH','TN','AP','TG','KL','GJ','DL','UP','RJ','HR','PB','MP','WB','OD','BR','Other'].map(s=>`<option value="${s}"${a.state===s?' selected':''}>${s||'Select state...'}</option>`).join('')}
+            </select>
+          </div>
+          <div class="fgrp form-full"><label>Address Line 1</label><input id="f-l1" value="${a.line1}" placeholder="House / flat no., building, street"/></div>
+          <div class="fgrp form-full"><label>Address Line 2 (optional)</label><input id="f-l2" value="${a.line2}" placeholder="Landmark, area, colony"/></div>
+        </div>
+        <div style="margin-top:20px"><button class="cta-btn" onclick="APP.nextStep(1)">Continue to Review &#8594;</button></div>
+      </div>
+    </div>`;
+  },
+
+  stepReview(){
+    const t=this.totals(this.addr.state);
+    const a=this.addr;
+    return`<div class="back-link" onclick="APP.step=1;APP.renderCheckout()">&#8592; Edit Address</div>
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start">
+      <div>
+        <div class="co-card">
+          <div class="co-card-hd">&#128722; Order Items</div>
+          <div class="co-card-body">
+            <div class="review-items">
+              ${this.cart.map(i=>`<div class="ri">
+                <div><div class="ri-name">${i.emoji} ${i.name}</div><div class="ri-meta">${i.label} &times; ${i.qty}</div></div>
+                <div class="ri-price">&#8377;${(i.price*i.qty).toLocaleString('en-IN')}</div>
+              </div>`).join('')}
+            </div>
+          </div>
+        </div>
+        <div class="co-card" style="margin-top:16px">
+          <div class="co-card-hd">&#128205; Delivering to</div>
+          <div class="co-card-body" style="font-size:14px;line-height:1.7;color:var(--tx)">
+            <strong>${a.name}</strong> &bull; ${a.phone}<br/>
+            ${a.line1}${a.line2?', '+a.line2:''}<br/>
+            ${a.city}, ${a.state} &mdash; ${a.pin}
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="summary-box">
+          <div class="sum-hd">Price Details</div>
+          <div class="sum-body">
+            <div class="sum-row"><span class="lbl">Subtotal (${this.cart.reduce((a,i)=>a+i.qty,0)} items)</span><span class="val">&#8377;${t.sub.toLocaleString('en-IN')}</span></div>
+            <div class="sum-row"><span class="lbl">Shipping</span><span class="val" style="color:var(--g3)">${t.free?'FREE':'&#8377;'+t.ship}</span></div>
+            <div class="sum-row"><span class="lbl">GST (5%)</span><span class="val">&#8377;${t.gst.toLocaleString('en-IN')}</span></div>
+            <hr class="sum-divider"/>
+            <div class="sum-total"><span class="lbl">Total</span><span class="val">&#8377;${t.total.toLocaleString('en-IN')}</span></div>
+            <button class="cta-btn" onclick="APP.nextStep(2)">Continue to Payment &#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  },
+
+  stepPayment(){
+    const t=this.totals(this.addr.state);
+    return`<div class="back-link" onclick="APP.step=2;APP.renderCheckout()">&#8592; Back to Review</div>
+    <div style="display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start">
+      <div>
+        <div class="co-card">
+          <div class="co-card-hd">&#128179; Choose Payment</div>
+          <div class="co-card-body">
+            <div class="pay-opts">
+              <div class="pay-opt${this.pay==='razorpay'?' sel':''}" onclick="APP.setPay('razorpay')">
+                <div class="pay-opt-icon">&#128247;</div>
+                <div><div class="pay-opt-name">Pay Online</div><div class="pay-opt-desc">UPI, Cards, Netbanking, Wallets via Razorpay</div></div>
+                <div class="pay-check">${this.pay==='razorpay'?'<div class="pay-check-dot"></div>':''}</div>
+              </div>
+              <div class="pay-opt${this.pay==='cod'?' sel':''}" onclick="APP.setPay('cod')">
+                <div class="pay-opt-icon">&#128176;</div>
+                <div><div class="pay-opt-name">Cash on Delivery</div><div class="pay-opt-desc">Pay when your order arrives at your door</div></div>
+                <div class="pay-check">${this.pay==='cod'?'<div class="pay-check-dot"></div>':''}</div>
+              </div>
+            </div>
+            <div style="background:var(--cr);border:1px solid var(--bdr);border-radius:10px;padding:14px;font-size:13px;color:var(--mt);margin-bottom:16px">
+              &#128274; Your payment is secured by 256-bit SSL encryption. KrishiMane never stores your card details.
+            </div>
+            <button class="cta-btn gold" onclick="APP.placeOrder()">${this.pay==='razorpay'?'Pay &#8377;'+t.total.toLocaleString('en-IN')+' via Razorpay':'Confirm Order &mdash; Pay on Delivery'}</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="summary-box">
+          <div class="sum-hd">Final Bill</div>
+          <div class="sum-body">
+            ${this.cart.map(i=>`<div class="sum-row"><span class="lbl" style="font-size:13px">${i.emoji} ${i.name} ${i.label} &times;${i.qty}</span><span class="val" style="font-size:13px">&#8377;${(i.price*i.qty).toLocaleString('en-IN')}</span></div>`).join('')}
+            <hr class="sum-divider"/>
+            <div class="sum-row"><span class="lbl">Shipping</span><span class="val" style="color:var(--g3)">${t.free?'FREE':'&#8377;'+t.ship}</span></div>
+            <div class="sum-row"><span class="lbl">GST (5%)</span><span class="val">&#8377;${t.gst.toLocaleString('en-IN')}</span></div>
+            <hr class="sum-divider"/>
+            <div class="sum-total"><span class="lbl">Grand Total</span><span class="val">&#8377;${t.total.toLocaleString('en-IN')}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  },
+
+  setPay(method){this.pay=method;this.renderCheckout();},
+
+  placeOrder(){
+    const yr=new Date().getFullYear();
+    const num=String(Math.floor(Math.random()*9000)+1000);
+    this.orderId='KM-'+yr+'-'+num;
+    this.cart=[];this.updateBadge();
+    this.show('confirm');
+  },
+
+  renderConfirm(){
+    const el=document.getElementById('confirm-content');
+    if(!el)return;
+    const del=new Date();del.setDate(del.getDate()+6);
+    const delStr=del.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});
+    el.innerHTML=`<div class="confirm-icon">&#10003;</div>
+    <h2>Order Placed!</h2>
+    <p>Thank you for choosing KrishiMane. Your order is confirmed and will be processed shortly.</p>
+    <div class="order-id"><div class="lbl">ORDER ID</div><div class="val">${this.orderId}</div></div>
+    <div class="deliv-badge">&#128666; Expected delivery by <strong>${delStr}</strong><br/>Confirmation sent to your registered email.</div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button class="cta-btn" style="width:auto;padding:12px 28px" onclick="APP.show('products')">&#8592; Shop More Oils</button>
+    </div>`;
+  },
+
+  nextStep(from){
+    if(from===1){
+      const n=document.getElementById('f-name')?.value.trim();
+      const ph=document.getElementById('f-phone')?.value.trim();
+      const pin=document.getElementById('f-pin')?.value.trim();
+      const st=document.getElementById('f-state')?.value;
+      const l1=document.getElementById('f-l1')?.value.trim();
+      if(!n||!ph||!pin||!st||!l1){this.showToast('Please fill in all required fields.');return;}
+      this.addr={name:n,phone:ph,pin,city:document.getElementById('f-city')?.value||'',state:st,line1:l1,line2:document.getElementById('f-l2')?.value||''};
+    }
+    this.step=from+1;this.renderCheckout();
+  },
+
+  bindCheckout(){
+    const pin=document.getElementById('f-pin');
+    if(pin) pin.addEventListener('input',e=>{
+      const v=e.target.value;
+      if(v.length===6){
+        const pmap={'56':'Bengaluru','57':'Mysuru','58':'Mangaluru','40':'Mumbai','41':'Pune','60':'Chennai','50':'Hyderabad','38':'Ahmedabad','11':'New Delhi','30':'Jaipur'};
+        const pre=v.substring(0,2);
+        const city=pmap[pre]||'Your City';
+        const smap={'56':'KA','57':'KA','58':'KA','40':'MH','41':'MH','60':'TN','50':'TG','38':'GJ','11':'DL','30':'RJ'};
+        const st=smap[pre]||'';
+        document.getElementById('f-city').value=city;
+        if(st){const sel=document.getElementById('f-state');if(sel)sel.value=st;}
+        document.getElementById('pin-hint').textContent=city+(st?', '+st:'');
+      }
+    });
+  },
+};
+
+APP.renderProducts();
+APP.show('products');
+</script>
